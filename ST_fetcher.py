@@ -5,9 +5,10 @@ import json
 import pymysql
 import os
 
-connection = pymysql.connect(user='seth',
-                             password='cookies',
-                             db='stocktwits')
+# be sure to change these values!!
+connection = pymysql.connect(user='user',
+                             password='pass',
+                             db='db')
 
 
 # mysql_writer configured for specific data from Stocktwits
@@ -73,7 +74,7 @@ with open('out.json', 'wb') as f:
     c = pycurl.Curl()
     # this API call returns the most recent tweets from a curated list of content
     # awaiting approval for more in-depth data streams
-    c.setopt(c.URL, 'https://api.stocktwits.com/api/2/streams/suggested.json?access_token=1ad63859ca761495a7ea38c4cdc128369ad331f5')
+    c.setopt(c.URL, 'https://api.stocktwits.com/api/2/streams/suggested.json?access_token=<access_token>') # be sure to change access_token
     c.setopt(c.WRITEDATA, f)
     c.perform()
     c.close()
